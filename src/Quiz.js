@@ -8,25 +8,31 @@ class Quiz extends Component {
         super(props);
         this.state = {
             numOfQuestions: 10,
-            questionsArr: []
+            questions: [],
+            correctAnswers: [],
+            incorrectAnswers: []
         }
     }
 
     async componentDidMount() {
-        let arr = [];
+        let questionsArr = [];
+        let correctAnswersArr = [];
+        let incorrectAnswersArr = [];
         let i = 0;
 
         let res = await axios.get("https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple");
-
-        console.log(res);
         
         while (i < this.state.numOfQuestions) {
-            arr.push(res.data.results[i].question);
+            questionsArr.push(res.data.results[i].question);
+            correctAnswersArr.push(res.data.results[i].correct_answer);
+            incorrectAnswersArr.push(res.data.results[i].incorrect_answers);
             i++;
         }
 
         this.setState({
-            questionsArr: arr
+            questions: questionsArr,
+            correctAnswers: correctAnswersArr,
+            incorrectAnswers: incorrectAnswersArr
         });
     }
 
@@ -41,9 +47,8 @@ class Quiz extends Component {
                     <i className="em em-brain"></i>
                 </div>
                 <div className="Quiz-quizlist">
-                    {this.state.questionsArr.map((question, idx) => (
-                        <Question key={"element" + idx} text={question} num={this.state.numOfQuestions} test={this.state.key} />
-                    ))}
+                    <Question questions={this.state.questions} correctAnswers={this.state.correctAnswers}
+                        incorrectAnswers={this.state.incorrectAnswers} />
                 </div>
             </div>
         )
