@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Question from './Question';
+import {Accordion} from "react-bootstrap";
 import './Quiz.css';
 import axios from 'axios';
 
@@ -8,32 +8,30 @@ class Quiz extends Component {
         super(props);
         this.state = {
             numOfQuestions: 10,
-            questions: [],
-            correctAnswers: [],
-            incorrectAnswers: []
+            questionsArr: []
         }
     }
 
     async componentDidMount() {
-        let questionsArr = [];
-        let correctAnswersArr = [];
-        let incorrectAnswersArr = [];
+        let arr = [];
         let i = 0;
 
         let res = await axios.get("https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple");
+
+        console.log(res);
         
         while (i < this.state.numOfQuestions) {
-            questionsArr.push(res.data.results[i].question);
-            correctAnswersArr.push(res.data.results[i].correct_answer);
-            incorrectAnswersArr.push(res.data.results[i].incorrect_answers);
+            arr.push(res.data.results[i]);
             i++;
         }
 
         this.setState({
-            questions: questionsArr,
-            correctAnswers: correctAnswersArr,
-            incorrectAnswers: incorrectAnswersArr
+            questionsArr: arr
         });
+
+        for (let i = 0; i < this.state.questionsArr.length; i++) {
+            console.log(this.state.questionsArr[i]);
+        }
     }
 
     render() {
@@ -47,8 +45,9 @@ class Quiz extends Component {
                     <i className="em em-brain"></i>
                 </div>
                 <div className="Quiz-quizlist">
-                    <Question questions={this.state.questions} correctAnswers={this.state.correctAnswers}
-                        incorrectAnswers={this.state.incorrectAnswers} />
+                    {this.state.questionsArr.map(h => (
+                        <h1>{h.category}</h1>
+                    ))}
                 </div>
             </div>
         )
