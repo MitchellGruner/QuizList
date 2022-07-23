@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Question from './Question';
 import './Quiz.css';
 import axios from 'axios';
-import {v4 as uuidv4} from 'uuid';
 
 class Quiz extends Component {
     constructor(props) {
