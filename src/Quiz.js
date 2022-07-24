@@ -28,16 +28,12 @@ class Quiz extends Component {
         this.setState({
             questionsArr: arr
         });
-
-        for (let i = 0; i < this.state.questionsArr.length; i++) {
-            console.log(this.state.questionsArr[i]);
-        }
     }
 
     render() {
-        for (let i = 0; i < this.state.id; i++) {
-            console.log(this.state.id[i]);
-        }
+        console.log(this.state.questionsArr.length);
+
+        
         return (
             <div className="Quiz">
                 <div className="Quiz-sidebar">
@@ -45,8 +41,15 @@ class Quiz extends Component {
                     <i className="em em-brain"></i>
                 </div>
                 <div className="Quiz-quizlist">
-                    {this.state.questionsArr.map(h => (
-                        <h1>{h.category}</h1>
+                    {this.state.questionsArr.map((question, idx) => (
+                        <Accordion>
+                            <Accordion.Item eventKey={idx}>
+                                <Accordion.Header>{question.category}</Accordion.Header>
+                                <Accordion.Body>
+                                {question.question}
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        </Accordion>
                     ))}
                 </div>
             </div>
