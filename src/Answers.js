@@ -35,12 +35,11 @@ class Answers extends Component {
         });
     }
 
-    handleClick = (id) => {
-        console.log(id);
-        for (let i = 0; i < this.state.correctArr.length; i++) {
-            if (id === this.state.correctArr[i]) {
-                console.log("true");
-            }
+    handleClick (arg) {
+        if (this.state.correctArr.includes(arg)) {
+            console.log("correct");
+        } else {
+            console.log("incorrect");
         }
     }
 
@@ -48,18 +47,18 @@ class Answers extends Component {
         return (
             <div className="Answers">
                 <div className="row flex-row">
-                    <button onClick={this.handleClick(0)} className="col-md-6">
+                    <button onClick={() => this.handleClick(this.state.answersArr[0])} className="col-md-6">
                         {this.state.answersArr[0]}
                     </button>
-                    <button onClick={this.handleClick(1)} className="col-md-6">
+                    <button onClick={() => this.handleClick(this.state.answersArr[1])} className="col-md-6">
                         {this.state.answersArr[1]}
                     </button>
                 </div>
                 <div className="row flex-row">
-                    <button onClick={this.handleClick(2)} className="col-md-6">
+                    <button onClick={() => this.handleClick(this.state.answersArr[2])} className="col-md-6">
                         {this.state.answersArr[2]}
                     </button>
-                    <button onClick={this.handleClick(3)} className="col-md-6">
+                    <button onClick={() => this.handleClick(this.state.answersArr[3])} className="col-md-6">
                         {this.state.answersArr[3]}
                     </button>
                 </div>
