@@ -25,12 +25,13 @@
 }
 
 .Quiz-quizlist {
+    height: 100%;
     background-color: #fff;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     margin: auto;
-    display: initial;
     width: 70%;
     align-self: center;
+    overflow: scroll;
 }
 
 .em {
@@ -38,4 +39,9 @@
     height: 8em;
     border-radius: 50%;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.Quiz-header .accordion-button {
+    font-size: 0.9em;
+    padding: 0.81em;
 }
