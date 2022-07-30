@@ -12,13 +12,15 @@ class Answers extends Component {
     }
 
     async componentDidMount() {
-        let arr = [];
+        let arr1 = [];
+        let arr2 = [];
 
         for (let i = 0; i < this.props.incorrect.length; i++) {
-            arr.push(this.props.incorrect[i]);
+            arr1.push(this.props.incorrect[i]);
         }
 
-        arr.push(this.props.correct);
+        arr1.push(this.props.correct);
+        arr2.push(this.props.correct);
 
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
@@ -27,19 +29,19 @@ class Answers extends Component {
             }
         }
 
-        shuffleArray(arr);
+        shuffleArray(arr1);
 
         this.setState({
-            answersArr: arr,
-            correctArr: arr
+            answersArr: arr1,
+            correctArr: arr2
         });
     }
 
     handleClick (arg) {
-        if (this.state.correctArr.includes(arg)) {
-            console.log("correct");
+        if (this.state.correctArr.includes(this.state.answersArr[arg])) {
+            console.log("correct!");
         } else {
-            console.log("incorrect");
+            console.log("incorrect!");
         }
     }
 
@@ -47,18 +49,18 @@ class Answers extends Component {
         return (
             <div className="Answers">
                 <div className="row flex-row">
-                    <button onClick={() => this.handleClick(this.state.answersArr[0])} className="col-md-6">
+                    <button onClick={() => this.handleClick(0)} className="Answers-btn col-md-6">
                         {this.state.answersArr[0]}
                     </button>
-                    <button onClick={() => this.handleClick(this.state.answersArr[1])} className="col-md-6">
+                    <button onClick={() => this.handleClick(1)} className="Answers-btn col-md-6">
                         {this.state.answersArr[1]}
                     </button>
                 </div>
                 <div className="row flex-row">
-                    <button onClick={() => this.handleClick(this.state.answersArr[2])} className="col-md-6">
+                    <button onClick={() => this.handleClick(2)} className="Answers-btn col-md-6">
                         {this.state.answersArr[2]}
                     </button>
-                    <button onClick={() => this.handleClick(this.state.answersArr[3])} className="col-md-6">
+                    <button onClick={() => this.handleClick(3)} className="Answers-btn col-md-6">
                         {this.state.answersArr[3]}
                     </button>
                 </div>
