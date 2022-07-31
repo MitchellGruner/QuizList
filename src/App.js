@@ -1,10 +1,10 @@
-import Quiz from './Quiz';
+import Start from './Start';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Quiz />
+      <Start />
     </div>
   );
 }
