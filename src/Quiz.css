@@ -15,12 +15,12 @@
     height: 80vh;
 }
 
-.Quiz-sidebar-title {
+.sidebar-title {
     color: #fff;
     font-size: 2.6em;
 }
 
-.Quiz-sidebar-title span {
+.sidebar-title span {
     color: #ff7d1d;
 }
 
@@ -44,4 +44,9 @@
 .Quiz-header .accordion-button {
     font-size: 0.9em;
     padding: 0.81em;
+}
+
+.Quiz-transition-active {
+    opacity: 0;
+    transition: opacity 700ms ease-out;
 }
