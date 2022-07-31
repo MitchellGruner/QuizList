@@ -28,7 +28,7 @@ class Quiz extends Component {
         let arr = [];
         let i = 0;
 
-        let res = await axios.get(`https://opentdb.com/api.php?amount=${this.state.numOfQuestions}&difficulty=easy&type=multiple`);
+        let res = await axios.get(`https://opentdb.com/api.php?amount=${this.state.numOfQuestions}&difficulty=${this.props.difficulty}&type=multiple`);
 
         console.log(res);
         
@@ -70,6 +70,7 @@ class Quiz extends Component {
                     <button onClick={this.getQuestions}>Remove</button>
                 </div>
                 <div className="Quiz-quizlist">
+                    {this.props.difficulty}
                     <TransitionGroup>
                         {this.state.questionsArr.map((question, idx) => (
                             <CSSTransition key={idx} timeout={700} className="Quiz-transition">
