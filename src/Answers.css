@@ -1,3 +1,15 @@
 .Answers .col-md-6 {
     text-align: center;
 }
+
+.Answers-container {
+    margin: 1.2em auto;
+}
+
+.Answers-btn {
+    color: #fff;
+    background-color: #ff7d1d;
+    border-color: #ff7d1d;
+    margin: 0.3em auto;
+    max-width: 35%;
+}
