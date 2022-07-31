@@ -40,6 +40,7 @@ class Answers extends Component {
     handleClick (arg) {
         if (this.state.correctArr.includes(this.state.answersArr[arg])) {
             console.log("correct!");
+            this.props.removeAccordion(this.props.key);
         } else {
             console.log("incorrect!");
         }
@@ -48,21 +49,23 @@ class Answers extends Component {
     render() {
         return (
             <div className="Answers">
-                <div className="row flex-row">
-                    <button onClick={() => this.handleClick(0)} className="Answers-btn col-md-6">
-                        {this.state.answersArr[0]}
-                    </button>
-                    <button onClick={() => this.handleClick(1)} className="Answers-btn col-md-6">
-                        {this.state.answersArr[1]}
-                    </button>
-                </div>
-                <div className="row flex-row">
-                    <button onClick={() => this.handleClick(2)} className="Answers-btn col-md-6">
-                        {this.state.answersArr[2]}
-                    </button>
-                    <button onClick={() => this.handleClick(3)} className="Answers-btn col-md-6">
-                        {this.state.answersArr[3]}
-                    </button>
+                <div className="Answers-container">
+                    <div className="row flex-row">
+                        <button onClick={() => this.handleClick(0)} className="Answers-btn col-md-6">
+                            {this.state.answersArr[0]}
+                        </button>
+                        <button onClick={() => this.handleClick(1)} className="Answers-btn col-md-6">
+                            {this.state.answersArr[1]}
+                        </button>
+                    </div>
+                    <div className="row flex-row">
+                        <button onClick={() => this.handleClick(2)} className="Answers-btn col-md-6">
+                            {this.state.answersArr[2]}
+                        </button>
+                        <button onClick={() => this.handleClick(3)} className="Answers-btn col-md-6">
+                            {this.state.answersArr[3]}
+                        </button>
+                    </div>
                 </div>
             </div>
         )
