@@ -1,9 +1,28 @@
 .Start-box {
     background-color: #25144A;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 40em;
     height: 80vh;
+}
+
+.Start-box .sidebar-title {
+    text-align: center;
+    padding-top: 2.2em;
+}
+
+.Start-box .em-brain {
+    display: block;
+    margin: 0 auto;
+    width: 6em;
+    height: 6em;
+}
+
+.Start-form {
+    display: block;
+    width: 75%;
+    margin: 0 auto;
+    padding-top: 1.6em;
 }
