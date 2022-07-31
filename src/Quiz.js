@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Answers from './Answers';
 import {Accordion} from "react-bootstrap";
+import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import './Quiz.css';
 import axios from 'axios';
 
@@ -8,10 +9,13 @@ class Quiz extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            accordion: [],
             numOfQuestions: 15,
             questionsArr: JSON.parse(window.localStorage.getItem("questionsArr") || "[]")
         };
         this.getQuestions = this.getQuestions.bind(this);
+        this.create = this.create.bind(this);
+        this.handleDeletion = this.handleDeletion.bind(this);
     }
 
     componentDidMount() {
@@ -45,26 +49,46 @@ class Quiz extends Component {
         window.location.reload();
     }
 
+    create (newAccordion) {
+        this.setState({
+            accordion: [...this.state.accordion, newAccordion]
+        });
+    }
+
+    handleDeletion (id) {
+        this.setState({
+            accordion: this.state.accordion.filter(a => a.id !== id)
+        });
+    }
+
     render() {
         return (
             <div className="Quiz">
                 <div className="Quiz-sidebar">
-                    <h1 className="Quiz-sidebar-title"><span>Quiz</span> List</h1>
+                    <h1 className="sidebar-title"><span>Quiz</span> List</h1>
                     <i className="em em-brain"></i>
                     <button onClick={this.getQuestions}>Remove</button>
                 </div>
                 <div className="Quiz-quizlist">
-                    {this.state.questionsArr.map((question, idx) => (
-                        <Accordion>
-                            <Accordion.Item eventKey={idx}>
-                                <Accordion.Header className="Quiz-header">{question.category}</Accordion.Header>
-                                <Accordion.Body>
-                                {question.question}
-                                <Answers incorrect={question.incorrect_answers} correct={question.correct_answer} />
-                                </Accordion.Body>
-                            </Accordion.Item>
-                        </Accordion>
-                    ))}
+                    <TransitionGroup>
+                        {this.state.questionsArr.map((question, idx) => (
+                            <CSSTransition key={idx} timeout={700} className="Quiz-transition">
+                                <Accordion>
+                                    <Accordion.Item eventKey={idx}>
+                                        <Accordion.Header className="Quiz-header">{question.category}</Accordion.Header>
+                                        <Accordion.Body>
+                                        {question.question}
+                                        <Answers key={idx} 
+                                            incorrect={question.incorrect_answers} 
+                                            correct={question.correct_answer} 
+                                            removeAccordion={this.handleDeletion}
+                                        />
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                </Accordion>
+                            </CSSTransition>
+                        ))}
+                    </TransitionGroup>
                 </div>
             </div>
         )
