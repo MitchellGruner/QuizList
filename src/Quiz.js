@@ -10,7 +10,7 @@ class Quiz extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			numOfQuestions: 15,
+			numOfQuestions: 10,
 			questionsArr: JSON.parse(
 				window.localStorage.getItem("questionsArr") || "[]"
 			),
@@ -31,10 +31,8 @@ class Quiz extends Component {
 		let i = 0;
 
 		let res = await axios.get(
-			`https://opentdb.com/api.php?amount=${this.state.numOfQuestions}&difficulty=${this.props.difficulty}&type=multiple`
+			"https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple"
 		);
-
-		console.log(res);
 
 		while (i < this.state.numOfQuestions) {
 			arr.push(res.data.results[i]);
@@ -46,8 +44,6 @@ class Quiz extends Component {
 		});
 
 		window.localStorage.setItem("questionsArr", JSON.stringify(arr));
-
-		window.location.reload();
 	}
 
 	create(newAccordion) {
@@ -65,6 +61,8 @@ class Quiz extends Component {
 	}
 
 	render() {
+		console.log("length of arr: " + this.state.questionsArr);
+
 		return (
 			<div className="Quiz">
 				<div className="Quiz-sidebar">
