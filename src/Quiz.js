@@ -58,11 +58,14 @@ class Quiz extends Component {
 				return obj.incorrect_answers !== answer;
 			}),
 		});
+
+		window.localStorage.setItem(
+			"questionsArr",
+			JSON.stringify(this.state.questionsArr)
+		);
 	}
 
 	render() {
-		console.log("length of arr: " + this.state.questionsArr);
-
 		return (
 			<div className="Quiz">
 				<div className="Quiz-sidebar">
@@ -70,7 +73,12 @@ class Quiz extends Component {
 						<span>Quiz</span> List
 					</h1>
 					<i className="em em-brain"></i>
-					<button onClick={this.getQuestions}>Remove</button>
+					<button
+						onClick={this.getQuestions}
+						className="Quiz-newGame"
+					>
+						New <span>Game</span>
+					</button>
 				</div>
 				<div className="Quiz-quizlist">
 					{this.props.difficulty}
@@ -88,6 +96,7 @@ class Quiz extends Component {
 										</Accordion.Header>
 										<Accordion.Body>
 											{question.question}
+
 											<Answers
 												idKey={uuid()}
 												incorrect={
