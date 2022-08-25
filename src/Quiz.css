@@ -45,6 +45,10 @@
 	font-weight: 600;
 }
 
+.Quiz-score {
+	color: #fff;
+}
+
 .Quiz-newGame span {
 	color: #25144a;
 	font-style: italic;
