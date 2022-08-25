@@ -18,7 +18,7 @@ class Quiz extends Component {
 			questionsArr: JSON.parse(
 				window.localStorage.getItem("questionsArr") || "[]"
 			),
-			flag: false,
+			timer: 100,
 		};
 		this.getQuestions = this.getQuestions.bind(this);
 		this.newGame = this.newGame.bind(this);
@@ -49,19 +49,13 @@ class Quiz extends Component {
 			questionsArr: arr,
 		});
 
-		window.localStorage.setItem("questionsArr", JSON.stringify(arr));
 		this.newGame();
 	}
 
 	newGame() {
-		window.localStorage.clear();
-
-		if (!this.state.flag) {
-			window.location.reload();
-			this.setState({
-				flag: true,
-			});
-		}
+		this.setState({
+			timer: 100,
+		});
 	}
 
 	create(newAccordion) {
@@ -147,7 +141,7 @@ class Quiz extends Component {
 					</TransitionGroup>
 				</div>
 				<div className="Quiz-timer">
-					<Timer />
+					<Timer time={this.state.timer} />
 				</div>
 			</div>
 		);
