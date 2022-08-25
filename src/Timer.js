@@ -1,7 +1,7 @@
 import * as React from "react";
 
 const Timer = () => {
-	const initialTimer = localStorage.getItem("timer") ?? 100;
+	const initialTimer = localStorage.getItem("timer") ?? this.props.time;
 	const timeoutId = React.useRef(null);
 	const [timer, setTimer] = React.useState(initialTimer);
 
