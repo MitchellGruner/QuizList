@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Timer from "./Timer";
 import Answers from "./Answers";
-import CalculateScore from "./CalculateScore";
 import { Accordion } from "react-bootstrap";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./Quiz.css";
@@ -13,12 +12,16 @@ class Quiz extends Component {
 		super(props);
 		this.state = {
 			numOfQuestions: 10,
-			correctAnswerCount: 0,
+			correctAnswerCount: JSON.parse(
+				window.localStorage.getItem("correctAnswerCount")
+			),
 			questionsArr: JSON.parse(
 				window.localStorage.getItem("questionsArr") || "[]"
 			),
+			flag: false,
 		};
 		this.getQuestions = this.getQuestions.bind(this);
+		this.newGame = this.newGame.bind(this);
 		this.create = this.create.bind(this);
 		this.handleDeletion = this.handleDeletion.bind(this);
 	}
@@ -47,7 +50,18 @@ class Quiz extends Component {
 		});
 
 		window.localStorage.setItem("questionsArr", JSON.stringify(arr));
-		window.localStorage.setItem("timer", 100);
+		this.newGame();
+	}
+
+	newGame() {
+		window.localStorage.clear();
+
+		if (!this.state.flag) {
+			window.location.reload();
+			this.setState({
+				flag: true,
+			});
+		}
 	}
 
 	create(newAccordion) {
@@ -60,6 +74,11 @@ class Quiz extends Component {
 		this.setState((st) => ({
 			correctAnswerCount: st.correctAnswerCount + 10,
 		}));
+
+		window.localStorage.setItem(
+			"correctAnswerCount",
+			JSON.stringify(this.state.correctAnswerCount + 10)
+		);
 
 		this.setState({
 			questionsArr: this.state.questionsArr.filter((obj) => {
@@ -88,9 +107,7 @@ class Quiz extends Component {
 						New <span>Game</span>
 					</button>
 					<div className="Quiz-score">
-						<CalculateScore
-							correct={this.state.correctAnswerCount}
-						/>
+						{this.state.correctAnswerCount}
 					</div>
 				</div>
 				<div className="Quiz-quizlist">
