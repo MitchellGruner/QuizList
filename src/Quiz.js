@@ -47,6 +47,7 @@ class Quiz extends Component {
 		});
 
 		window.localStorage.setItem("questionsArr", JSON.stringify(arr));
+		window.localStorage.setItem("timer", 100);
 	}
 
 	create(newAccordion) {
