@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Timer from "./Timer";
 import Answers from "./Answers";
 import { Accordion } from "react-bootstrap";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -115,6 +116,9 @@ class Quiz extends Component {
 							</CSSTransition>
 						))}
 					</TransitionGroup>
+				</div>
+				<div className="Quiz-timer">
+					<Timer />
 				</div>
 			</div>
 		);
