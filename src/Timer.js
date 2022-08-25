@@ -7,7 +7,7 @@ const Timer = () => {
 
 	const countTimer = React.useCallback(() => {
 		if (timer <= 0) {
-			localStorage.clear("timer");
+			localStorage.setItem("timer", 0);
 		} else {
 			setTimer(timer - 1);
 			localStorage.setItem("timer", timer);
