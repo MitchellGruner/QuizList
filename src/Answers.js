@@ -40,6 +40,8 @@ class Answers extends Component {
 	handleClick(arg) {
 		if (this.state.correctArr.includes(this.state.answersArr[arg])) {
 			this.props.removeAccordion(this.props.incorrect);
+		} else {
+			this.props.wrongGuess();
 		}
 	}
 
