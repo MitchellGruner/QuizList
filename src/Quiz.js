@@ -19,11 +19,15 @@ class Quiz extends Component {
 				window.localStorage.getItem("questionsArr") || "[]"
 			),
 			timer: 100,
+			indicatorEmoji: "",
+			indicator: "Correct",
 		};
 		this.getQuestions = this.getQuestions.bind(this);
 		this.newGame = this.newGame.bind(this);
 		this.create = this.create.bind(this);
 		this.handleDeletion = this.handleDeletion.bind(this);
+		this.handleWrongGuess = this.handleWrongGuess.bind(this);
+		this.getEmoji = this.getEmoji.bind(this);
 	}
 
 	componentDidMount() {
@@ -66,6 +70,7 @@ class Quiz extends Component {
 
 	handleDeletion(answer) {
 		this.setState((st) => ({
+			indicator: "Correct",
 			correctAnswerCount: st.correctAnswerCount + 10,
 		}));
 
@@ -86,6 +91,20 @@ class Quiz extends Component {
 		);
 	}
 
+	handleWrongGuess() {
+		this.setState({
+			indicator: "Incorrect",
+		});
+	}
+
+	getEmoji() {
+		if (this.state.indicator === "Incorrect") {
+			return "em em-heavy_multiplication_x";
+		} else {
+			return "em em-heavy_check_mark";
+		}
+	}
+
 	render() {
 		return (
 			<div className="Quiz">
@@ -102,6 +121,9 @@ class Quiz extends Component {
 					</button>
 					<div className="Quiz-score">
 						{this.state.correctAnswerCount}
+					</div>
+					<div className="Quiz-indicator">
+						<i className={this.getEmoji()} />
 					</div>
 				</div>
 				<div className="Quiz-quizlist">
@@ -131,6 +153,9 @@ class Quiz extends Component {
 												}
 												removeAccordion={
 													this.handleDeletion
+												}
+												wrongGuess={
+													this.handleWrongGuess
 												}
 											/>
 										</Accordion.Body>
