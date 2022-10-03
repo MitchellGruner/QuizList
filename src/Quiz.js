@@ -84,9 +84,9 @@ class Quiz extends Component {
 
 	getEmoji() {
 		if (this.state.indicator === "Incorrect") {
-			return "em em-heavy_multiplication_x";
+			return "em em-disappointed_relieved";
 		} else {
-			return "em em-heavy_check_mark";
+			return "em em-sweat_smile";
 		}
 	}
 
@@ -98,18 +98,18 @@ class Quiz extends Component {
 						<span>Quiz</span> List
 					</h1>
 					<i className="em em-brain"></i>
+					<div className="Quiz-indicator">
+						<i className={this.getEmoji()} />
+					</div>
+					<div className="Quiz-score">
+						{this.state.correctAnswerCount}
+					</div>
 					<button
 						onClick={this.getQuestions}
 						className="Quiz-newGame"
 					>
 						New <span>Game</span>
 					</button>
-					<div className="Quiz-score">
-						{this.state.correctAnswerCount}
-					</div>
-					<div className="Quiz-indicator">
-						<i className={this.getEmoji()} />
-					</div>
 				</div>
 				<div className="Quiz-quizlist">
 					{this.props.difficulty}
