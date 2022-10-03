@@ -12,13 +12,8 @@ class Quiz extends Component {
 		super(props);
 		this.state = {
 			numOfQuestions: 10,
-			correctAnswerCount: JSON.parse(
-				window.localStorage.getItem("correctAnswerCount")
-			),
-			questionsArr: JSON.parse(
-				window.localStorage.getItem("questionsArr") || "[]"
-			),
-			timer: 100,
+			correctAnswerCount: 0,
+			questionsArr: [],
 			indicatorEmoji: "",
 			indicator: "Correct",
 		};
@@ -74,21 +69,11 @@ class Quiz extends Component {
 			correctAnswerCount: st.correctAnswerCount + 10,
 		}));
 
-		window.localStorage.setItem(
-			"correctAnswerCount",
-			JSON.stringify(this.state.correctAnswerCount + 10)
-		);
-
 		this.setState({
 			questionsArr: this.state.questionsArr.filter((obj) => {
 				return obj.incorrect_answers !== answer;
 			}),
 		});
-
-		window.localStorage.setItem(
-			"questionsArr",
-			JSON.stringify(this.state.questionsArr)
-		);
 	}
 
 	handleWrongGuess() {
@@ -166,7 +151,7 @@ class Quiz extends Component {
 					</TransitionGroup>
 				</div>
 				<div className="Quiz-timer">
-					<Timer time={this.state.timer} />
+					<Timer />
 				</div>
 			</div>
 		);

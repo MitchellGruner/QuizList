@@ -1,16 +1,15 @@
 import * as React from "react";
 
 const Timer = () => {
-	const initialTimer = localStorage.getItem("timer") ?? this.props.time;
+	const initialTimer = 100;
 	const timeoutId = React.useRef(null);
 	const [timer, setTimer] = React.useState(initialTimer);
 
 	const countTimer = React.useCallback(() => {
 		if (timer <= 0) {
-			localStorage.setItem("timer", 0);
+			timer = 0;
 		} else {
 			setTimer(timer - 1);
-			localStorage.setItem("timer", timer);
 		}
 	}, [timer]);
 
