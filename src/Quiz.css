@@ -33,7 +33,7 @@
 	overflow: scroll;
 }
 
-.em {
+.em-brain {
 	border-radius: 50%;
 	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
@@ -47,6 +47,7 @@
 
 .Quiz-score {
 	color: #fff;
+	font-weight: bolder;
 }
 
 .Quiz-newGame span {
@@ -87,9 +88,20 @@
 		width: 70%;
 	}
 
-	.em {
+	.em-brain {
 		width: 8em;
 		height: 8em;
+	}
+
+	.em-disappointed_relieved,
+	.em-sweat_smile {
+		width: 5em;
+		height: 5em;
+		margin: 2.2em auto;
+	}
+
+	.Quiz-score {
+		font-size: 2.2em;
 	}
 
 	.Quiz-newgame {
