@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Timer from "./Timer";
 import Answers from "./Answers";
+import LivesIndicator from "./LivesIndicator";
 import { Accordion } from "react-bootstrap";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./Quiz.css";
@@ -12,17 +13,21 @@ class Quiz extends Component {
 		super(props);
 		this.state = {
 			numOfQuestions: 10,
-			correctAnswerCount: 0,
+			correctScore: "",
+			score: 0,
 			questionsArr: [],
 			indicatorEmoji: "",
-			indicator: "Correct",
+			indicator: "",
+			incorrect: 0,
 		};
 		this.getQuestions = this.getQuestions.bind(this);
-		this.newGame = this.newGame.bind(this);
+		this.refresh = this.refresh.bind(this);
 		this.create = this.create.bind(this);
 		this.handleDeletion = this.handleDeletion.bind(this);
 		this.handleWrongGuess = this.handleWrongGuess.bind(this);
 		this.getEmoji = this.getEmoji.bind(this);
+		this.correctScore = this.correctScore.bind(this);
+		this.wrongScore = this.wrongScore.bind(this);
 	}
 
 	componentDidMount() {
@@ -47,14 +52,10 @@ class Quiz extends Component {
 		this.setState({
 			questionsArr: arr,
 		});
-
-		this.newGame();
 	}
 
-	newGame() {
-		this.setState({
-			timer: 100,
-		});
+	refresh() {
+		window.location.reload(false);
 	}
 
 	create(newAccordion) {
@@ -66,7 +67,6 @@ class Quiz extends Component {
 	handleDeletion(answer) {
 		this.setState((st) => ({
 			indicator: "Correct",
-			correctAnswerCount: st.correctAnswerCount + 10,
 		}));
 
 		this.setState({
@@ -77,14 +77,35 @@ class Quiz extends Component {
 	}
 
 	handleWrongGuess() {
-		this.setState({
+		this.setState((st) => ({
 			indicator: "Incorrect",
-		});
+			incorrect: st.incorrect + 1,
+		}));
+	}
+
+	correctScore() {
+		this.setState((st) => ({
+			score: st.score + 15,
+		}));
+	}
+
+	wrongScore() {
+		if ((this.state.score - 25) <= 0) {
+			this.setState({
+				score: 0,
+			});
+		} else {
+			this.setState((st) => ({
+				score: st.score - 25,
+			}));
+		}
 	}
 
 	getEmoji() {
 		if (this.state.indicator === "Incorrect") {
 			return "em em-disappointed_relieved";
+		} else if (this.state.indicator === "") {
+			return "em em-placeholder";
 		} else {
 			return "em em-sweat_smile";
 		}
@@ -94,22 +115,26 @@ class Quiz extends Component {
 		return (
 			<div className="Quiz">
 				<div className="Quiz-sidebar">
+					<div className="Quiz-lives">
+						<LivesIndicator />
+					</div>
 					<h1 className="sidebar-title">
 						<span>Quiz</span> List
 					</h1>
 					<i className="em em-brain"></i>
+					<div className="Quiz-score">
+						{this.state.score}
+					</div>
+					<button
+						onClick={() => {this.getQuestions(); this.refresh();}}
+						className="Quiz-newGame Quiz-parallelogram"
+					>
+						<div className="Quiz-skew">New <span>Game</span>
+						</div>
+					</button>
 					<div className="Quiz-indicator">
 						<i className={this.getEmoji()} />
 					</div>
-					<div className="Quiz-score">
-						{this.state.correctAnswerCount}
-					</div>
-					<button
-						onClick={this.getQuestions}
-						className="Quiz-newGame"
-					>
-						New <span>Game</span>
-					</button>
 				</div>
 				<div className="Quiz-quizlist">
 					{this.props.difficulty}
@@ -142,6 +167,8 @@ class Quiz extends Component {
 												wrongGuess={
 													this.handleWrongGuess
 												}
+												correctScore={this.correctScore}
+												wrongScore={this.wrongScore}
 											/>
 										</Accordion.Body>
 									</Accordion.Item>
