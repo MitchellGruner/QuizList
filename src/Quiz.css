@@ -3,7 +3,6 @@
 }
 
 .Quiz-timer {
-	position: absolute;
 	color: #fff;
 }
 
@@ -45,6 +44,14 @@
 	font-weight: 600;
 }
 
+.Quiz-parallelogram {
+	transform: skew(-20deg);
+}
+
+.Quiz-skew {
+	transform: skew(20deg);
+}
+
 .Quiz-score {
 	color: #fff;
 	font-weight: bolder;
@@ -64,7 +71,7 @@
 	background-color: #fff;
 }
 
-@media (min-width: 1600px) {
+@media (min-width: 1200px) {
 	.Quiz {
 		width: 80%;
 		height: 80%;
@@ -72,7 +79,7 @@
 
 	.Quiz-timer {
 		font-size: 2.8em;
-		left: 39em;
+		margin-left: 0.81em;
 	}
 
 	.Quiz-sidebar {
@@ -89,11 +96,12 @@
 	}
 
 	.em-brain {
-		width: 8em;
-		height: 8em;
+		width: 6.4em;
+		height: 6.4em;
 	}
 
 	.em-disappointed_relieved,
+	.em-placeholder,
 	.em-sweat_smile {
 		width: 5em;
 		height: 5em;
@@ -101,13 +109,17 @@
 	}
 
 	.Quiz-score {
-		font-size: 2.2em;
+		font-size: 2.6em;
 	}
 
-	.Quiz-newgame {
-		font-size: 1.2em;
+	.Quiz-newGame {
 		width: 9em;
 		height: 3em;
+		margin-top: 1.3em;
+	}
+
+	.Quiz-skew {
+		font-size: 1.1em;
 	}
 
 	.Quiz-header .accordion-button {
