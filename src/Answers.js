@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Timer from "./Timer";
 import "./Answers.css";
 
 class Answers extends Component {
@@ -40,8 +41,10 @@ class Answers extends Component {
 	handleClick(arg) {
 		if (this.state.correctArr.includes(this.state.answersArr[arg])) {
 			this.props.removeAccordion(this.props.incorrect);
+			this.props.correctScore();
 		} else {
 			this.props.wrongGuess();
+			this.props.wrongScore();
 		}
 	}
 
