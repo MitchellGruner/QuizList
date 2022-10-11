@@ -1,28 +1,21 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
+import "./LivesIndicator";
 
 class LivesIndicatorFive extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            
-        }
-        this.calculateBoom = this.calculateBoom.bind(this);
-    }
+	constructor(props) {
+		super(props);
+		this.state = {};
+	}
 
-    calculateBoom() {
-        let lives = 5 - this.props.lives;
-        for (let i = 0; i < lives; i++) {
-            return "em em-boom";
-        }
-    }
-
-    render() {
-        return (
-            <div className="LivesIndicator-container">
-                <i className={this.calculateBoom()}></i>
-            </div>
-        )
-    }
+	render() {
+		return (
+			<div className="LivesIndicator-container">
+				<span className="LivesIndicator-header">
+					{this.props.lives}
+				</span>
+			</div>
+		);
+	}
 }
 
 export default LivesIndicatorFive;
