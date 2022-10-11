@@ -1,0 +1,8 @@
+.LivesIndicator-container {
+	display: flex;
+}
+
+.LivesIndicator-header {
+	color: #fff;
+	font-weight: bolder;
+}
