@@ -49,6 +49,55 @@ class Quiz extends Component {
 			i++;
 		}
 
+		for (let j = 0; j < arr.length; j++) {
+			for (let i = 0; i < arr.length; i++) {
+
+				/* for questions */
+				if (arr[i].question.includes("&#039;")) {
+					arr[i].question = arr[i].question.replace("&#039;", "'");
+				}
+	
+				if (arr[i].question.includes("&quot;")) {
+					arr[i].question = arr[i].question.replace("&quot;", "'");
+				}
+				
+				if (arr[i].question.includes("&amp;")) {
+					arr[i].question = arr[i].question.replace("&amp;", "&");
+				}
+
+				if (arr[i].question.includes("&Uuml;")) {
+					arr[i].question = arr[i].question.replace("&Uuml;", "Ü");
+				}
+
+				if (arr[i].question.includes("&uuml;")) {
+					arr[i].question = arr[i].question.replace("&Uuml;", "ü");
+				}
+
+				if (arr[i].question.includes("&shy;")) {
+					arr[i].question = arr[i].question.replace("&shy;", "-");
+				}
+
+				if (arr[i].question.includes("&rsquo")) {
+					arr[i].question = arr[i].question.replace("&rsquo", "'");
+				}
+			}
+		}
+
+		// for (let j = 0; j < 10; j++) {
+		// 	for (let i = 0; i < arr.length; i++) {
+		// 		for (let l = 0; i < arr.incorrect_answers.length; l++) {
+					
+		// 			if (arr[l].includes("&#039;")) {
+		// 				arr[l] = arr[l].replace("&#039;", "'");
+		// 			}
+
+		// 			if (arr[l].includes("&amp;")) {
+		// 				arr[l] = arr[l].replace("&amp;", "&");
+		// 			}
+		// 		}
+		// 	}
+		// }
+
 		this.setState({
 			questionsArr: arr,
 		});
