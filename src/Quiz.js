@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import Timer from "./Timer";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Answers from "./Answers";
+import EndGame from "./EndGame";
 import LivesIndicator from "./LivesIndicator";
 import { Accordion } from "react-bootstrap";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -83,21 +84,6 @@ class Quiz extends Component {
 			}
 		}
 
-		// for (let j = 0; j < 10; j++) {
-		// 	for (let i = 0; i < arr.length; i++) {
-		// 		for (let l = 0; i < arr.incorrect_answers.length; l++) {
-					
-		// 			if (arr[l].includes("&#039;")) {
-		// 				arr[l] = arr[l].replace("&#039;", "'");
-		// 			}
-
-		// 			if (arr[l].includes("&amp;")) {
-		// 				arr[l] = arr[l].replace("&amp;", "&");
-		// 			}
-		// 		}
-		// 	}
-		// }
-
 		this.setState({
 			questionsArr: arr,
 		});
@@ -134,20 +120,24 @@ class Quiz extends Component {
 
 	correctScore() {
 		this.setState((st) => ({
-			score: st.score + 15,
+			score: st.score + 1,
 		}));
+
+		if ((window.localStorage.getItem("highScore") == null) || (window.localStorage.getItem("highScore") == 0)) {
+			window.localStorage.setItem("highScore", 0);
+		}
+		
+		if ((this.state.score + 1) > window.localStorage.getItem("highScore")) {
+			window.localStorage.setItem("highScore", (this.state.score + 1));
+		}
 	}
 
 	wrongScore() {
-		if ((this.state.score - 25) <= 0) {
-			this.setState({
-				score: 0,
-			});
-		} else {
-			this.setState((st) => ({
-				score: st.score - 25,
-			}));
-		}
+		<Router>
+			<Routes>
+				<Route path="/endgame" element={<EndGame />} />
+			</Routes>
+		</Router>
 	}
 
 	getEmoji() {
@@ -172,7 +162,10 @@ class Quiz extends Component {
 					</h1>
 					<i className="em em-brain"></i>
 					<div className="Quiz-score">
-						{this.state.score}
+						Correct: {this.state.score}
+					</div>
+					<div className="Quiz-high-score">
+						High Score: {window.localStorage.getItem("highScore")}
 					</div>
 					<button
 						onClick={() => {this.getQuestions(); this.refresh();}}
@@ -226,9 +219,9 @@ class Quiz extends Component {
 						))}
 					</TransitionGroup>
 				</div>
-				<div className="Quiz-timer">
+				{/* <div className="Quiz-timer">
 					<Timer />
-				</div>
+				</div> */}
 			</div>
 		);
 	}
