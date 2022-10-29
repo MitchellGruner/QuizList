@@ -52,7 +52,8 @@
 	transform: skew(20deg);
 }
 
-.Quiz-score {
+.Quiz-score,
+.Quiz-high-score {
 	color: #fff;
 	font-weight: bolder;
 }
@@ -111,7 +112,8 @@
 	/* test */
 
 	.Quiz-score {
-		font-size: 2.6em;
+		font-size: 1.8em;
+		margin: 1.1em auto;
 	}
 
 	.Quiz-newGame {
