@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Answers from "./Answers";
-import EndGame from "./EndGame";
 import LivesIndicator from "./LivesIndicator";
 import { Accordion } from "react-bootstrap";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -13,7 +11,7 @@ class Quiz extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			numOfQuestions: 10,
+			numOfQuestions: 25,
 			correctScore: "",
 			score: 0,
 			questionsArr: [],
@@ -42,7 +40,7 @@ class Quiz extends Component {
 		let i = 0;
 
 		let res = await axios.get(
-			"https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple"
+			"https://opentdb.com/api.php?amount=25&difficulty=easy&type=multiple"
 		);
 
 		while (i < this.state.numOfQuestions) {
@@ -133,11 +131,8 @@ class Quiz extends Component {
 	}
 
 	wrongScore() {
-		<Router>
-			<Routes>
-				<Route path="/endgame" element={<EndGame />} />
-			</Routes>
-		</Router>
+		document.getElementById("initialState").style.display = "none";
+		document.getElementById("wrongguess").style.display = "block";
 	}
 
 	getEmoji() {
@@ -178,7 +173,7 @@ class Quiz extends Component {
 						<i className={this.getEmoji()} />
 					</div>
 				</div>
-				<div className="Quiz-quizlist">
+				<div id="initialState" className="Quiz-quizlist">
 					{this.props.difficulty}
 					<TransitionGroup>
 						{this.state.questionsArr.map((question) => (
@@ -218,6 +213,16 @@ class Quiz extends Component {
 							</CSSTransition>
 						))}
 					</TransitionGroup>
+				</div>
+				<div id="wrongguess" className="Quiz-quizlist-wrong">
+					<h1>Game Over!</h1>
+					<button
+						onClick={() => {this.getQuestions(); this.refresh();}}
+						className="Quiz-newGame Quiz-parallelogram"
+					>
+						<div className="Quiz-skew">New <span>Game</span>
+						</div>
+					</button>
 				</div>
 				{/* <div className="Quiz-timer">
 					<Timer />
