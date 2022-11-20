@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Timer from "./Timer";
 import "./Answers.css";
 
 class Answers extends Component {
