@@ -39,7 +39,20 @@
 .Quiz-quizlist-wrong {
 	display: none;
 	text-align: center;
-	background-color: #fff;
+	background-color: #25144a;
+	border-left: 7px solid #fff;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.quizlist-wrong-header,
+.quizlist-wrong-paragraph {
+	color: #fff;
+}
+
+.quizlist-wrong-header {
+	font-weight: bolder;
 }
 
 .em-brain {
