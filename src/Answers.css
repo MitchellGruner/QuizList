@@ -2,14 +2,87 @@
     text-align: center;
 }
 
-.Answers-container {
-    margin: 1.2em auto;
-}
-
 .Answers-btn {
     color: #fff;
     background-color: #ff7d1d;
     border-color: #ff7d1d;
-    margin: 0.3em auto;
-    max-width: 35%;
+    transition: 0.4s ease-in-out;
+}
+
+.Answers-btn:hover {
+    background-color: #fff;
+    color: #ff7d1d;
+    transition: 0.4s ease-in-out;
+}
+
+@media (max-width: 399px) {
+
+}
+
+@media (min-width: 400px) {
+
+}
+
+@media (min-width: 576px) {
+
+}
+
+@media (min-width: 768px) {
+    .Answers-container {
+        margin: 0.9em auto;
+    }
+
+    .accordion-body {
+        font-size: 0.81em;
+    }
+
+    .Answers-btn {
+        margin: 0.23em auto;
+        max-width: 35%;
+    }
+}
+
+@media (min-width: 992px) {
+    .Answers-container {
+        margin: 1em auto;
+    }
+
+    .accordion-body {
+        font-size: 0.9em;
+    }
+
+    .Answers-btn {
+        margin: 0.25em auto;
+        max-width: 35%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .Answers-container {
+        margin: 1.1em auto;
+    }
+
+    .accordion-body {
+        font-size: 1em;
+    }
+
+    .Answers-btn {
+        margin: 0.27em auto;
+        max-width: 35%;
+    }
+}
+
+@media (min-width: 1400px) {
+    .Answers-container {
+        margin: 1.2em auto;
+    }
+
+    .accordion-body {
+        font-size: 1.1em;
+    }
+
+    .Answers-btn {
+        margin: 0.3em auto;
+        max-width: 35%;
+    }
 }
