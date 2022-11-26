@@ -858,25 +858,61 @@ class Quiz extends Component {
 					<div className="Quiz-lives">
 						<LivesIndicator />
 					</div>
-					<h1 className="sidebar-title">
-						<span>Quiz</span> List
-					</h1>
-					<i className="em em-brain"></i>
-					<div className="Quiz-score">
-						Correct: {this.state.score}
+					
+					<div className="sidebar-title-large">
+						<h1 className="sidebar-title">
+							<span>Quiz</span> List
+						</h1>
+						<i className="em em-brain"></i>
 					</div>
-					<div className="Quiz-high-score">
-						High Score: {window.localStorage.getItem("highScore")}
+
+					<div className="sidebar-title-small">
+						<h1 className="sidebar-title">
+							<span>Quiz</span> List
+						</h1>
+						<i className="em em-brain"></i>
 					</div>
-					<button
-						onClick={() => {this.getQuestions(); this.refresh();}}
-						className="Quiz-newGame Quiz-parallelogram"
-					>
-						<div className="Quiz-skew">New <span>Game</span>
+
+					<div className="sidebar-title-large">
+						<div className="Quiz-score">
+							Correct: {this.state.score}
 						</div>
-					</button>
-					<div className="Quiz-indicator">
-						<i className={this.getEmoji()} />
+						<div className="Quiz-high-score">
+							High Score: {window.localStorage.getItem("highScore")}
+						</div>
+						<button
+							onClick={() => {this.getQuestions(); this.refresh();}}
+							className="Quiz-newGame Quiz-parallelogram"
+						>
+							<div className="Quiz-skew">New <span>Game</span>
+							</div>
+						</button>
+						<div className="Quiz-indicator">
+							<i className={this.getEmoji()} />
+						</div>
+					</div>
+
+					<div className="sidebar-title-small">
+						<div className="sidebar-title-small-col">
+							<div className="Quiz-score">
+								Correct: {this.state.score}
+							</div>
+							<div className="Quiz-high-score">
+								High Score: {window.localStorage.getItem("highScore")}
+							</div>
+						</div>
+						<div className="sidebar-title-small-col">
+							<div className="Quiz-indicator">
+								<i className={this.getEmoji()} />
+							</div>
+						</div>
+						<button
+							onClick={() => {this.getQuestions(); this.refresh();}}
+							className="Quiz-newGame Quiz-parallelogram"
+						>
+							<div className="Quiz-skew">New <span>Game</span>
+							</div>
+						</button>
 					</div>
 				</div>
 				<div id="initialState" className="Quiz-quizlist">
