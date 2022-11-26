@@ -54,13 +54,13 @@ class Answers extends Component {
 					<div className="row flex-row">
 						<button
 							onClick={() => this.handleClick(0)}
-							className="Answers-btn col-md-6"
+							className="Answers-btn col-sm-6 col-xs-12"
 						>
 							{this.state.answersArr[0]}
 						</button>
 						<button
 							onClick={() => this.handleClick(1)}
-							className="Answers-btn col-md-6"
+							className="Answers-btn col-sm-6 col-xs-12"
 						>
 							{this.state.answersArr[1]}
 						</button>
@@ -68,13 +68,13 @@ class Answers extends Component {
 					<div className="row flex-row">
 						<button
 							onClick={() => this.handleClick(2)}
-							className="Answers-btn col-md-6"
+							className="Answers-btn col-sm-6 col-xs-12"
 						>
 							{this.state.answersArr[2]}
 						</button>
 						<button
 							onClick={() => this.handleClick(3)}
-							className="Answers-btn col-md-6"
+							className="Answers-btn col-sm-6 col-xs-12"
 						>
 							{this.state.answersArr[3]}
 						</button>
