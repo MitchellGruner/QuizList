@@ -16,15 +16,48 @@
 }
 
 @media (max-width: 399px) {
+    .Answers-container {
+        margin: 0.81em auto;
+    }
 
+    .accordion-body {
+        font-size: 0.73em;
+    }
+
+    .Answers-btn {
+        margin: 0.21em auto;
+        max-width: 75%;
+    }
 }
 
 @media (min-width: 400px) {
+    .Answers-container {
+        margin: 0.81em auto;
+    }
 
+    .accordion-body {
+        font-size: 0.73em;
+    }
+
+    .Answers-btn {
+        margin: 0.21em auto;
+        max-width: 35%;
+    }
 }
 
 @media (min-width: 576px) {
+    .Answers-container {
+        margin: 0.81em auto;
+    }
 
+    .accordion-body {
+        font-size: 0.73em;
+    }
+
+    .Answers-btn {
+        margin: 0.21em auto;
+        max-width: 35%;
+    }
 }
 
 @media (min-width: 768px) {
