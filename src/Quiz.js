@@ -958,7 +958,7 @@ class Quiz extends Component {
 				</div>
 				<div id="wrongguess" className="Quiz-quizlist-wrong">
 					<span className="quizlist-wrong-header">Game Over!</span><br />
-					<p className="quizlist-wrong-paragraph">Your final score was {this.state.score}</p>
+					<p className="quizlist-wrong-paragraph">Your final score was <strong>{this.state.score}</strong></p>
 					<button
 						onClick={() => {this.getQuestions(); this.refresh();}}
 						className="Quiz-newGame Quiz-parallelogram"
