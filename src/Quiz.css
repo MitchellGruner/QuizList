@@ -157,6 +157,14 @@
 		font-size: 0.73em;
 		padding: 0.49em;
 	}
+
+	.quizlist-wrong-header {
+		font-size: 1.6em;
+	}
+
+	.quizlist-wrong-paragraph {
+		font-size: 0.81em;
+	}
 }
 
 @media (min-width: 400px) and (max-width: 575px) {
@@ -220,6 +228,14 @@
 		font-size: 0.81em;
 		padding: 0.54em;
 	}
+
+	.quizlist-wrong-header {
+		font-size: 1.7em;
+	}
+
+	.quizlist-wrong-paragraph {
+		font-size: 0.9em;
+	}
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
@@ -282,6 +298,14 @@
 	.Quiz-header .accordion-button {
 		font-size: 0.73em;
 		padding: 0.54em;
+	}
+
+	.quizlist-wrong-header {
+		font-size: 1.8em;
+	}
+
+	.quizlist-wrong-paragraph {
+		font-size: 1em;
 	}
 }
 
@@ -366,6 +390,14 @@
 		font-size: 0.81em;
 		padding: 0.6em;
 	}
+
+	.quizlist-wrong-header {
+		font-size: 2em;
+	}
+
+	.quizlist-wrong-paragraph {
+		font-size: 1.1em;
+	}
 }
 
 @media (min-width: 992px) {
@@ -418,6 +450,14 @@
 
 	.Quiz-header .accordion-button {
 		padding: 0.66em;
+	}
+
+	.quizlist-wrong-header {
+		font-size: 2.2em;
+	}
+
+	.quizlist-wrong-paragraph {
+		font-size: 1.2em;
 	}
 }
 
@@ -472,6 +512,14 @@
 	.Quiz-header .accordion-button {
 		padding: 0.73em;
 	}
+
+	.quizlist-wrong-header {
+		font-size: 2.4em;
+	}
+
+	.quizlist-wrong-paragraph {
+		font-size: 1.3em;
+	}
 }
 
 @media (min-width: 1400px) {
@@ -525,5 +573,13 @@
 	.Quiz-header .accordion-button {
 		font-size: 0.9em;
 		padding: 0.81em;
+	}
+
+	.quizlist-wrong-header {
+		font-size: 2.6em;
+	}
+
+	.quizlist-wrong-paragraph {
+		font-size: 1.4em;
 	}
 }
