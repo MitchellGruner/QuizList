@@ -369,7 +369,8 @@
 
 	.Quiz-score {
 		font-size: 1.5em;
-		margin: 0.81em auto;
+		margin-top: 0.81em;
+		text-align: center;
 	}
 
 	.Quiz-high-score {
@@ -435,7 +436,7 @@
 
 	.Quiz-score {
 		font-size: 1.6em;
-		margin: 0.9em auto;
+		margin-top: 0.9em;
 	}
 
 	.Quiz-newGame {
@@ -496,7 +497,7 @@
 
 	.Quiz-score {
 		font-size: 1.7em;
-		margin: 1em auto;
+		margin-top: 1em;
 	}
 
 	.Quiz-newGame {
@@ -557,7 +558,7 @@
 
 	.Quiz-score {
 		font-size: 1.8em;
-		margin: 1.1em auto;
+		margin-top: 1.1em;
 	}
 
 	.Quiz-newGame {
