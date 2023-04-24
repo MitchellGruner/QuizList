@@ -827,7 +827,7 @@ class Quiz extends Component {
 			score: st.score + 1,
 		}));
 
-		if ((window.localStorage.getItem("highScore") == null) || (window.localStorage.getItem("highScore") == 0)) {
+		if ((window.localStorage.getItem("highScore") === null) || (window.localStorage.getItem("highScore") === 0)) {
 			window.localStorage.setItem("highScore", 0);
 		}
 		
