@@ -238,7 +238,7 @@
 	}
 }
 
-@media (min-width: 576px) and (max-width: 767px) {
+@media (min-width: 576px) and (max-width: 768px) {
 	.Quiz {
 		margin: 0 auto;
 		padding-top: 3em;
@@ -309,7 +309,7 @@
 	}
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
 	.App,
 	.Quiz {
 		display: block !important;
@@ -325,7 +325,7 @@
 	}
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
 	.Quiz {
 		width: 80%;
 		height: 80%;
@@ -407,11 +407,6 @@
 		height: 80%;
 	}
 
-	.Quiz-sidebar {
-		width: 30%;
-		height: 80vh;
-	}
-
 	.sidebar-title {
 		font-size: 2.6em;
 	}
@@ -468,11 +463,6 @@
 		height: 80%;
 	}
 
-	.Quiz-sidebar {
-		width: 30%;
-		height: 80vh;
-	}
-
 	.sidebar-title {
 		font-size: 2.8em;
 	}
@@ -527,11 +517,6 @@
 	.Quiz {
 		width: 80%;
 		height: 80%;
-	}
-
-	.Quiz-sidebar {
-		width: 30%;
-		height: 80vh;
 	}
 
 	.sidebar-title {
