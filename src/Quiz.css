@@ -39,16 +39,43 @@
 	border-left: 7px solid #fff;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+	justify-content: center;
 }
 
 .quizlist-wrong-header,
-.quizlist-wrong-paragraph {
+.quizlist-wrong-paragraph,
+.quizlist-answer-selected {
 	color: #fff;
 }
 
-.quizlist-wrong-header {
+.quizlist-answer-selected {
+	font-style: normal;
+	border-bottom: 3px solid #ff7d1d;
+	line-height: 1em;
+	font-size: 0.66em;
+	padding: 0em 1.6em 0.37em;
+}
+
+.quizlist-answer-selected span {
+	color: #ff7d1d;
+}
+
+.quizlist-wrong-header,
+.quizlist-question,
+.quizlist-answer-selected span {
 	font-weight: bolder;
+}
+
+.quizlist-question {
+	color: #ff7d1d;
+	background-color: #fff;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	font-style: italic;
+	line-height: 1em;
+	width: 100%;
+	font-size: 0.73em;
+	padding: 0.54em 1.6em;
 }
 
 .em-brain {
@@ -229,6 +256,16 @@
 		padding: 0.54em;
 	}
 
+	.quizlist-question {
+		font-size: 0.81em;
+		padding: 0.6em 1.7em;
+	}
+
+	.quizlist-answer-selected {
+		font-size: 0.73em;
+		padding: 0em 1.7em 0.41em;
+	}
+
 	.quizlist-wrong-header {
 		font-size: 1.7em;
 	}
@@ -392,6 +429,16 @@
 		padding: 0.6em;
 	}
 
+	.quizlist-question {
+		font-size: 0.9em;
+		padding: 0.66em 1.8em;
+	}
+
+	.quizlist-answer-selected {
+		font-size: 0.81em;
+		padding: 0em 1.8em 0.45em;
+	}
+
 	.quizlist-wrong-header {
 		font-size: 2em;
 	}
@@ -448,12 +495,23 @@
 		padding: 0.66em;
 	}
 
+	.quizlist-question {
+		font-size: 1em;
+		padding: 0.73em 2em;
+	}
+
+	.quizlist-answer-selected {
+		font-size: 0.9em;
+		padding: 0em 2em 0.5em;
+	}
+
 	.quizlist-wrong-header {
 		font-size: 2.2em;
 	}
 
 	.quizlist-wrong-paragraph {
 		font-size: 1.2em;
+		margin-bottom: 1.7em;
 	}
 }
 
@@ -504,12 +562,23 @@
 		padding: 0.73em;
 	}
 
+	.quizlist-question {
+		font-size: 1.1em;
+		padding: 0.81em 2.2em;
+	}
+
+	.quizlist-answer-selected {
+		font-size: 1em;
+		padding: 0em 2.2em 0.55em;
+	}
+
 	.quizlist-wrong-header {
 		font-size: 2.4em;
 	}
 
 	.quizlist-wrong-paragraph {
 		font-size: 1.3em;
+		margin-bottom: 1.8em;
 	}
 }
 
@@ -560,6 +629,16 @@
 		font-size: 0.9em;
 		padding: 0.81em;
 	}
+	
+	.quizlist-question {
+		font-size: 1.2em;
+		padding: 0.9em 2.4em;
+	}
+
+	.quizlist-answer-selected {
+		font-size: 1.1em;
+		padding: 0em 2.4em 0.61em;
+	}
 
 	.quizlist-wrong-header {
 		font-size: 2.6em;
@@ -567,5 +646,6 @@
 
 	.quizlist-wrong-paragraph {
 		font-size: 1.4em;
+		margin-bottom: 2em;
 	}
 }
