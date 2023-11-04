@@ -42,7 +42,7 @@ class Answers extends Component {
 			this.props.removeAccordion(this.props.incorrect);
 			this.props.correctScore();
 		} else {
-			this.props.wrongGuess();
+			this.props.wrongGuess(this.props.question, this.state.answersArr[arg], this.state.correctArr);
 			this.props.wrongScore();
 		}
 	}
