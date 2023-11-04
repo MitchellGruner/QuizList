@@ -27,6 +27,7 @@ class Quiz extends Component {
 		this.getEmoji = this.getEmoji.bind(this);
 		this.correctScore = this.correctScore.bind(this);
 		this.wrongScore = this.wrongScore.bind(this);
+		this.getQuestion = this.getQuestion.bind(this);
 	}
 
 	componentDidMount() {
@@ -793,6 +794,10 @@ class Quiz extends Component {
 		});
 	}
 
+	getQuestion(question) {
+		console.log("This: " + question);
+	}
+
 	refresh() {
 		window.location.reload(false);
 	}
@@ -815,11 +820,15 @@ class Quiz extends Component {
 		});
 	}
 
-	handleWrongGuess() {
+	handleWrongGuess(question, incorrectGuess, correctGuess) {
 		this.setState((st) => ({
 			indicator: "Incorrect",
 			incorrect: st.incorrect + 1,
 		}));
+
+		document.getElementById("question").innerHTML = question;
+		document.getElementById("answer-selected").innerHTML = incorrectGuess;
+		document.getElementById("correct-answer").innerHTML = correctGuess;
 	}
 
 	correctScore() {
@@ -946,6 +955,9 @@ class Quiz extends Component {
 												wrongGuess={
 													this.handleWrongGuess
 												}
+												question={
+													question.question
+												}
 												correctScore={this.correctScore}
 												wrongScore={this.wrongScore}
 											/>
@@ -957,8 +969,10 @@ class Quiz extends Component {
 					</TransitionGroup>
 				</div>
 				<div id="wrongguess" className="Quiz-quizlist-wrong">
-					<span className="quizlist-wrong-header">Game Over!</span><br />
+				<span className="quizlist-wrong-header">Game Over!</span><br />
 					<p className="quizlist-wrong-paragraph">Your final score was <strong>{this.state.score}</strong></p>
+					<p id="question" className="quizlist-question"></p>
+					<p className="quizlist-answer-selected">You answered "<span id="answer-selected"></span>", but the correct answer was "<span id="correct-answer"></span>".</p>
 					<button
 						onClick={() => {this.getQuestions(); this.refresh();}}
 						className="Quiz-newGame Quiz-parallelogram"
