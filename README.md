@@ -23,3 +23,4 @@ This project tested my abilities to successfully import data from an API, and di
 7. Make sure you are in the root directory of the folder (the /app, /public etc folders should be here).
 8. Type 'npm install'.
 9. Type 'npm run dev'.
+10. Additionally, the project can be viewed here (without running this project on your local machine): https://master--vermillion-narwhal-b9ab97.netlify.app/
