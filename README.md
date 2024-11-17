@@ -2,7 +2,7 @@
 
 A quiz game in React.js that allows users to answer questions based on random questions given to them. The highest score is kept track of, and the user can keep playing until a question has been incorrectly answered. This project utilizes a trivia API, and is replaced with new questions whenever a user refreshes their page, or a new game is played.
 
-### Link to project: [https://www.averyspetsitting.com](https://master--vermillion-narwhal-b9ab97.netlify.app/)
+### Link to project: [QuizList](https://master--vermillion-narwhal-b9ab97.netlify.app/)
 
 ## How It's Made
 
