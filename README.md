@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+## QuizList
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A quiz game in React.js that allows users to answer questions based on random questions given to them. The highest score is kept track of, and the user can keep playing until a question has been incorrectly answered. This project utilizes a trivia API, and is replaced with new questions whenever a user refreshes their page, or a new game is played.
 
-## Available Scripts
+### Link to project: [https://www.averyspetsitting.com](https://master--vermillion-narwhal-b9ab97.netlify.app/)
 
-In the project directory, you can run:
+## How It's Made
 
-### `npm start`
+### Tech used: React.js, HTML, CSS, JavaScript
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Lessons Learned:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project tested my abilities to successfully import data from an API, and display this inforation to the end-user. Also, I learned about session-based storing, as the high score of a user is kept throughout. I learned many React.js properties, such as utilizing the virtual DOM by automatically updating the state whenever an action is performed (if a user's guess is correct, the emoji changes, the question disappears, and the score is updated.
 
-### `npm test`
+## How To Run on Your Machine:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Click on the green 'Code' button on this repository.
+2. Clone the repository by copying the web URL.
+3. Navigate to your desired folder you would like this project to reside in.
+4. Open up VS Code (or another IDE) and navigate to this folder.
+5. Open up your terminal.
+6. Type 'git clone _url copied from step 2_'.
+7. Make sure you are in the root directory of the folder (the /app, /public etc folders should be here).
+8. Type 'npm install'.
+9. Type 'npm run dev'.
