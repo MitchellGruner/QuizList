@@ -21,6 +21,7 @@ class Quiz extends Component {
 		};
 		this.getQuestions = this.getQuestions.bind(this);
 		this.refresh = this.refresh.bind(this);
+        this.debouncedGetQuestionsAndRefresh = this.debouncedGetQuestionsAndRefresh.bind(this);
 		this.create = this.create.bind(this);
 		this.handleDeletion = this.handleDeletion.bind(this);
 		this.handleWrongGuess = this.handleWrongGuess.bind(this);
@@ -36,19 +37,47 @@ class Quiz extends Component {
 		}
 	}
 
+	// Debounce function to limit the rate of function calls
+    debounce(func, wait) {
+        let timeout;
+        return (...args) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+    }
+
+    // Debounced version of the getQuestions and refresh methods
+    debouncedGetQuestionsAndRefresh() {
+        const debouncedFunction = this.debounce(() => {
+            this.getQuestions();
+            this.refresh();
+        }, 1000);
+        debouncedFunction();
+    }
+
+	// Function to delay execution
+    delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
 	/* use api to get questions / answers */
 	async getQuestions() {
 		let arr = [];
-		let i = 0;
+        let i = 0;
+        let success = false;
 
-		let res = await axios.get(
-			"https://opentdb.com/api.php?amount=25&difficulty=easy&type=multiple"
-		);
-
-		while (i < this.state.numOfQuestions) {
-			arr.push(res.data.results[i]);
-			i++;
-		}
+        while (!success) {
+            try {
+                let res = await axios.get(
+                    "https://opentdb.com/api.php?amount=25&difficulty=easy&type=multiple"
+                );
+                arr = res.data.results;
+                success = true; // Exit loop if request is successful
+            } catch (error) {
+                console.error("Failed to fetch questions, retrying...", error);
+                await this.delay(1000); // Wait 1 second before retrying
+            }
+        }
 
 		/* filtering for questions */
 		for (let j = 0; j < arr.length; j++) {
@@ -860,6 +889,11 @@ class Quiz extends Component {
 		}
 	}
 
+	// Method to refresh the page
+    refresh() {
+        window.location.reload();
+    }
+
 	render() {
 		return (
 			<div className="Quiz">
@@ -890,11 +924,10 @@ class Quiz extends Component {
 							High Score: {window.localStorage.getItem("highScore")}
 						</div>
 						<button
-							onClick={() => {this.getQuestions(); this.refresh();}}
+							onClick={this.debouncedGetQuestionsAndRefresh}
 							className="Quiz-newGame Quiz-parallelogram"
 						>
-							<div className="Quiz-skew">New <span>Game</span>
-							</div>
+							<div className="Quiz-skew">New <span>Game</span></div>
 						</button>
 						<div className="Quiz-indicator">
 							<i className={this.getEmoji()} />
@@ -916,11 +949,10 @@ class Quiz extends Component {
 							</div>
 						</div>
 						<button
-							onClick={() => {this.getQuestions(); this.refresh();}}
+							onClick={this.debouncedGetQuestionsAndRefresh}
 							className="Quiz-newGame Quiz-parallelogram"
 						>
-							<div className="Quiz-skew">New <span>Game</span>
-							</div>
+							<div className="Quiz-skew">New <span>Game</span></div>
 						</button>
 					</div>
 				</div>
@@ -974,11 +1006,10 @@ class Quiz extends Component {
 					<p id="question" className="quizlist-question"></p>
 					<p className="quizlist-answer-selected">You answered "<span id="answer-selected"></span>", but the correct answer was "<span id="correct-answer"></span>".</p>
 					<button
-						onClick={() => {this.getQuestions(); this.refresh();}}
+						onClick={this.debouncedGetQuestionsAndRefresh}
 						className="Quiz-newGame Quiz-parallelogram"
 					>
-						<div className="Quiz-skew">New <span>Game</span>
-						</div>
+						<div className="Quiz-skew">New <span>Game</span></div>
 					</button>
 				</div>
 			</div>
